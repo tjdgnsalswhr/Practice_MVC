@@ -1,16 +1,13 @@
-package com.example.demo.user.controller;
+package com.example.demo.user.controller.web;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.*;
+
+import com.example.demo.user.application.object.dto.ResponseDto;
+import com.example.demo.user.application.object.vo.UserVo;
 import com.example.demo.user.application.service.UserService;
 
 import io.swagger.annotations.ApiOperation;
@@ -32,7 +29,6 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
 	
 	private final UserService userService;
-	//원칙적으로 Controller로 드어온 요청은 서비스로 분류되어 Back-end로 넘어간다.
 	
 	@GetMapping(value = "/users")
 	//Controller에서 세부 Service로 넘길때 URL뒤에 붙이는 개념.
@@ -59,7 +55,7 @@ public class UserController {
 	@ApiOperation(value = "사용자 정보 1건 추가", httpMethod = "POST", notes = "사용자 정보 1건 추가 API.")
 	public ResponseEntity<Object> insetUserInfo(@RequestBody UserVo userVo)
 	{
-		userService.(userVo);
+		userService.insertUser(userVo);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

@@ -19,7 +19,7 @@ public class ResponseDto<T> {
 	
 	public ResponseDto(T data)
 	{
-		this(data, new ErrorVo);
+		this(data, new ErrorVo());
 	}
 	
 	public ResponseDto(ErrorVo errorVo)
